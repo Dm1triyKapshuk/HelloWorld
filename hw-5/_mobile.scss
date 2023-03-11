@@ -1,0 +1,106 @@
+@media (max-width: 767px) {
+    .center{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .top__box{
+        padding-top: 238px;
+        padding-bottom: 238px;
+        display: flex;
+        align-items: center;
+        
+        &_heading {
+        font-size: 32px;
+        line-height: 39px;
+        text-align: center;
+        }
+
+        &_text {
+        font-size: 14px;
+        line-height: 22px;
+        text-align: center;
+        }
+    }
+
+    .footer {
+        height: 1221px;
+
+        &__game {
+            width: 343px;
+            height: 300px;
+        }
+    }
+
+    .gametime {
+        display: flex;
+        flex-direction: column;
+           &__box{
+            align-items: center;
+        &-heading {
+            font-size: 32px;
+        line-height: 39px;
+        text-align: center;
+        }
+
+        &-text {
+            font-size: 14px;
+        line-height: 22px;
+        text-align: center;
+        }
+    }
+   
+}
+.gametime__img{
+   padding-top: 51px;
+   padding-bottom: 85px;
+}
+.gametime__png{
+    width: 344px;
+    height: 236px;
+   }
+
+.gameword {
+    display: flex;
+    flex-direction: column;
+    &__box {
+        padding-top: 51px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        align-items: center;
+        &-heading {
+            font-size: 32px;
+        line-height: 39px;
+        text-align: center;
+        }
+
+        &-text {
+            font-size: 14px;
+        line-height: 22px;
+        text-align: center;
+        }
+    }
+}   
+.gameword__img{
+    padding-top: 64px;
+    padding-bottom: 90px;
+}
+.gameriddle{
+    &__box {
+        &-heading {
+            font-size: 32px;
+        line-height: 39px;
+        text-align: center;
+        padding-bottom: 32px;
+        }
+
+        &-text {
+            font-size: 14px;
+        line-height: 22px;
+        text-align: center;
+        }
+    }
+}
+}
+
