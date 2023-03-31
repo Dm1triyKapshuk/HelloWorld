@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Проект "Комменты"</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <ul class="comments" id="comments">
+        <li class="comment" id = "comment">
+          <div class="comment-header">
+            <div>Глеб Фокин</div>
+            <div class="comment-time">12.02.22 12:18</div>
+          </div>
+          <div class="comment-body">
+            <div class="comment-text">
+              Это будет первый комментарий на этой странице
+            </div>
+          </div>
+          <div class="comment-footer">
+            <div class="likes">
+              <span class="likes-counter">3</span>
+              <button class="like-button"></button>
+            </div>
+          </div>
+        </li>
+        <li class="comment">
+          <div class="comment-header">
+            <div>Варвара Н.</div>
+            <div class="comment-time" >13.02.22 19:22</div>
+          </div>
+          <div class="comment-body">
+            <div class="comment-text">
+              Мне нравится как оформлена эта страница! ❤
+            </div>
+          </div>
+          <div class="comment-footer">
+            <div class="likes">
+              <span class="likes-counter">75</span>
+              <button class="like-button -active-like"></button>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="add-form">
+        <input 
+          type="text"
+          class="add-form-name"
+          placeholder="Введите ваше имя"
+          id="name-input"
+          value=""
+        />
+        
+        <textarea
+          type="textarea"
+          class="add-form-text"
+          placeholder="Введите ваш коментарий"
+          rows="4"
+          id = "comment-input"
+          
+        ></textarea>
+        <div class="add-form-row">
+          <button class="add-form-button" id="add-form-button">Написать</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <style>
+    .error {
+      background-color: brown;
+    }
+  </style>
+
+  <script>
+   const buttonElement = document.getElementById("add-form-button");
+   const commentsElement = document.getElementById("comments");
+   const textInputElement = document.getElementById("comment-input")
+   const nameInputElement = document.getElementById("name-input");
+   
+    const date = new Date();
+    let year = date.getFullYear() % 100;
+    let month = date.getMonth() +1;
+    let day = date.getDay();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    if (day < 10) {
+      day = "0" + day;
+    } if (hour < 10) {
+      hour = "0" + hour;
+    } if (minute < 10) {
+      minute = "0" + minute;
+    } if (month < 10) {
+      month = "0" + month;
+    } 
+    const currentDate = day + '.' + month + '.' + year + '  ' + hour + ':' + minute;
+      
+    
+  
+
+
+   buttonElement.addEventListener("click", () => {
+    nameInputElement.classList.remove("error")
+    if(nameInputElement.value === "" || textInputElement.value === ""){
+    nameInputElement.classList.add("error")
+      
+
+
+    return;
+   }
+
+  //  const options = {
+  //   year: '2-digit',
+  //   month: 'numeric',
+  //   day:'numeric',
+  //   timezone: 'UTC',
+  //   hour: 'numeric',
+  //   minute: '2-digit',
+  //  };
+  //  let now = new Date().toLocalString('ru-RU', options)
+
+
+
+   const oldCommentsHTML = commentsElement.innerHTML;
+   commentsElement.innerHTML = oldCommentsHTML + `<li class="comment">
+          <div class="comment-author">
+            <div>${nameInputElement.value}</div>
+            <div class="comment-time" >${currentDate}</div>
+          </div>
+          <div class="comment-body">
+            <div class="comment-text">
+              ${textInputElement.value};
+            </div>
+          </div>
+          <div class="comment-footer">
+            <div class="likes">
+              <span class="likes-counter">75</span>
+              <button class="like-button -active-like"></button>
+            </div>
+          </div>
+        </li>`;
+      })
+  
+  
+  
+
+    
+    // // function myDate() {
+    // //   let date = new Date();
+    // //   let monthArray = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+    // //   let myMinutes = String(date.getMinutes()).length < 2 ? '0' + date.getMinutes() : date.getMinutes();
+    // //   let myHours = String(date.getHours()).length < 2 ? '0' + date.getHours() : date.getHours();
+    // //   let myDay = String(date.getDate()).length < 2 ? '0' + date.getDate() : date.getDate();
+    // //   let myMonth = monthArray[+date.getMonth()];
+    // //   let myYear = String(date.getFullYear()).slice(2);
+    // //   let str = myDay + '.' + myMonth + '.' + myYear + '.' + myHours + ':' + myMinutes;
+    // //   return str;
+    // // }
+
+    // // function checkButton(){
+
+    // // if(nameInputElement.value != '' && commentInputElement .value != '') {
+    // //   buttonElement.disabled = false;
+    // // }
+    // // }
+
+
+    // // function showComment(){
+    // //   if (nameInputElement.value == '' || commentInputElement .value == '') {
+    // //     buttonElement.disabled = true;
+    // //     return;
+    // //   }
+
+    // //   const commentsElement = document.querySelector('.comments')
+    // //   const newCommentElement = document.querySelector('.comment').cloneNode(true);
+    // //   const newComment = document.createElement('li');
+
+    // //   newComment.className = 'comment';
+    // //   newComment.innerHTML = newCommentElement.innerHTML;
+
+    // //   newComment.querySelector('.comment-author').innerHTML = nameInputElement.value;
+    // //   newComment.querySelector('.comment-time').innerHTML = myDate();
+    // //   newComent.querySelector('.comment-text').innerHTML = commentInputElement.value;
+    // //   newComment.querySelector('.likes-counter').innerHTML = 0;
+
+    // //   commentsElement.append(newComment);
+
+    // //   nameInputElement.value = '';
+    // //   commentInputElement.value = '';
+    // //   buttonElement.disabled = true;
+    // // }
+   
+   
+  </script>
+</html>
